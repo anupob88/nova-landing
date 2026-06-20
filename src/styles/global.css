@@ -10,13 +10,15 @@
   --color-bg:        oklch(0.06 0.000 0);
   --color-surface:   oklch(0.12 0.006 300);
   --color-surface-alt: oklch(0.10 0.003 290);
-  --color-primary:   oklch(0.54 0.20 30);
-  --color-primary-glow: oklch(0.54 0.20 30 / 0.35);
+  --color-primary:   oklch(0.42 0.22 30);
+  --color-primary-hover: oklch(0.48 0.24 30);
+  --color-primary-glow: oklch(0.42 0.22 30 / 0.30);
   --color-accent:    oklch(0.67 0.17 250);
-  --color-accent-glow: oklch(0.67 0.17 250 / 0.30);
+  --color-accent-glow: oklch(0.67 0.17 250 / 0.25);
   --color-ink:       oklch(0.95 0.003 300);
   --color-muted:     oklch(0.55 0.015 300);
-  --color-border:    oklch(0.20 0.010 300);
+  --color-border:    oklch(0.25 0.012 300);
+  --color-focus:     oklch(0.67 0.17 250);
 
   /* Hero overlay gradient (dark mode only — light mode uses different overlay) */
   --hero-overlay: linear-gradient(
@@ -33,14 +35,16 @@
   :root:not([data-theme="dark"]) {
     --color-bg:            oklch(0.98 0.002 290);
     --color-surface:       oklch(1.000 0.000 0);
-    --color-surface-alt:   oklch(0.96 0.003 290);
-    --color-primary:       oklch(0.45 0.22 30);
-    --color-primary-glow:  oklch(0.45 0.22 30 / 0.15);
-    --color-accent:        oklch(0.55 0.18 250);
-    --color-accent-glow:   oklch(0.55 0.18 250 / 0.12);
+    --color-surface-alt:   oklch(0.97 0.004 290);
+    --color-primary:       oklch(0.40 0.22 30);
+    --color-primary-hover: oklch(0.45 0.24 30);
+    --color-primary-glow:  oklch(0.40 0.22 30 / 0.12);
+    --color-accent:        oklch(0.50 0.18 250);
+    --color-accent-glow:   oklch(0.50 0.18 250 / 0.10);
     --color-ink:           oklch(0.12 0.005 290);
-    --color-muted:         oklch(0.45 0.010 290);
-    --color-border:        oklch(0.85 0.005 290);
+    --color-muted:         oklch(0.38 0.012 290);
+    --color-border:        oklch(0.82 0.006 290);
+    --color-focus:         oklch(0.50 0.18 250);
     --hero-overlay: linear-gradient(
       180deg,
       oklch(0.98 0.002 290 / 0.60) 0%,
@@ -54,14 +58,16 @@
 [data-theme="light"] {
   --color-bg:            oklch(0.98 0.002 290);
   --color-surface:       oklch(1.000 0.000 0);
-  --color-surface-alt:   oklch(0.96 0.003 290);
-  --color-primary:       oklch(0.45 0.22 30);
-  --color-primary-glow:  oklch(0.45 0.22 30 / 0.15);
-  --color-accent:        oklch(0.55 0.18 250);
-  --color-accent-glow:   oklch(0.55 0.18 250 / 0.12);
+  --color-surface-alt:   oklch(0.97 0.004 290);
+  --color-primary:       oklch(0.40 0.22 30);
+  --color-primary-hover: oklch(0.45 0.24 30);
+  --color-primary-glow:  oklch(0.40 0.22 30 / 0.12);
+  --color-accent:        oklch(0.50 0.18 250);
+  --color-accent-glow:   oklch(0.50 0.18 250 / 0.10);
   --color-ink:           oklch(0.12 0.005 290);
-  --color-muted:         oklch(0.45 0.010 290);
-  --color-border:        oklch(0.85 0.005 290);
+  --color-muted:         oklch(0.38 0.012 290);
+  --color-border:        oklch(0.82 0.006 290);
+  --color-focus:         oklch(0.50 0.18 250);
   --hero-overlay: linear-gradient(
     180deg,
     oklch(0.98 0.002 290 / 0.60) 0%,
@@ -74,13 +80,15 @@
   --color-bg:        oklch(0.06 0.000 0);
   --color-surface:   oklch(0.12 0.006 300);
   --color-surface-alt: oklch(0.10 0.003 290);
-  --color-primary:   oklch(0.54 0.20 30);
-  --color-primary-glow: oklch(0.54 0.20 30 / 0.35);
+  --color-primary:   oklch(0.42 0.22 30);
+  --color-primary-hover: oklch(0.48 0.24 30);
+  --color-primary-glow: oklch(0.42 0.22 30 / 0.30);
   --color-accent:    oklch(0.67 0.17 250);
-  --color-accent-glow: oklch(0.67 0.17 250 / 0.30);
+  --color-accent-glow: oklch(0.67 0.17 250 / 0.25);
   --color-ink:       oklch(0.95 0.003 300);
   --color-muted:     oklch(0.55 0.015 300);
-  --color-border:    oklch(0.20 0.010 300);
+  --color-border:    oklch(0.25 0.012 300);
+  --color-focus:     oklch(0.67 0.17 250);
   --hero-overlay: linear-gradient(
     180deg,
     oklch(0.06 0 0 / 0.85) 0%,
@@ -161,6 +169,37 @@ a {
 
 a:hover {
   color: var(--color-primary);
+}
+
+/* ── Accessibility: Focus visible ── */
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Skip to content ── */
+
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 0.5rem;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 0.75rem;
 }
 
 /* ── Utility ── */
@@ -287,7 +326,7 @@ html[data-lang="en"] .lang-label[data-lang="en"] { display: inline; }
 }
 
 .btn-primary:hover {
-  background: oklch(0.59 0.22 30);
+  background: var(--color-primary-hover);
   box-shadow: 0 0 24px var(--color-primary-glow);
   color: white;
 }

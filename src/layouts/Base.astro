@@ -21,6 +21,7 @@ const { title, description, image } = Astro.props;
   <link rel="icon" href="/favicon.svg" />
 </head>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
   <nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-brand">Nova</a>
@@ -42,7 +43,7 @@ const { title, description, image } = Astro.props;
       </div>
     </div>
   </nav>
-  <main><slot /></main>
+  <main id="main-content"><slot /></main>
   <footer class="footer">
     <div class="footer-inner">
       <p class="footer-brand">Nova Oracle</p>
