@@ -180,6 +180,43 @@ a:hover {
 .text-accent { color: var(--color-accent); }
 .text-muted { color: var(--color-muted); }
 
+/* ── Language Toggle ── */
+
+/* Thai default: show TH, hide EN-only content */
+html[data-lang="th"] .lang-en { display: none; }
+html[data-lang="en"] .lang-th { display: none; }
+
+/* Nav lang switching */
+.nav-links a { font-size: var(--text-caption); }
+.nav-links a .lang-en { display: none; }
+html[data-lang="en"] .nav-links a .lang-en { display: inline; }
+html[data-lang="th"] .nav-links a .lang-en { display: none; }
+
+/* Lang button */
+.lang-label { display: none; }
+html[data-lang="th"] .lang-label[data-lang="th"],
+html[data-lang="en"] .lang-label[data-lang="en"] { display: inline; }
+
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--color-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-toggle:hover {
+  color: var(--color-ink);
+  border-color: var(--color-primary);
+}
+
 /* ── Theme Toggle ── */
 
 .theme-toggle {

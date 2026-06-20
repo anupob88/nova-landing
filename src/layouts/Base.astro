@@ -7,7 +7,7 @@ interface Props {
 const { title, description, image } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th" data-lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,15 +25,21 @@ const { title, description, image } = Astro.props;
     <div class="nav-inner">
       <a href="/" class="nav-brand">Nova</a>
       <ul class="nav-links">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/" class="active">หน้าแรก<span class="lang-en">Home</span></a></li>
+        <li><a href="/blog">บล็อก<span class="lang-en">Blog</span></a></li>
+        <li><a href="/projects">โปรเจค<span class="lang-en">Projects</span></a></li>
+        <li><a href="/about">เกี่ยวกับ<span class="lang-en">About</span></a></li>
       </ul>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
-        <span class="theme-icon-dark">☀</span>
-        <span class="theme-icon-light">☾</span>
-      </button>
+      <div class="flex items-center gap-2">
+        <button id="lang-toggle" class="theme-toggle" aria-label="Switch language" title="สลับภาษา / Switch language">
+          <span class="lang-label" data-lang="th">TH</span>
+          <span class="lang-label" data-lang="en">EN</span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+          <span class="theme-icon-dark">☀</span>
+          <span class="theme-icon-light">☾</span>
+        </button>
+      </div>
     </div>
   </nav>
   <main><slot /></main>
@@ -45,20 +51,35 @@ const { title, description, image } = Astro.props;
   </footer>
 </body>
 
-<!-- Theme persistence -->
+<!-- Theme + Language persistence -->
 <script>
   (function() {
-    const saved = localStorage.getItem("nova-theme");
-    if (saved === "light") document.documentElement.setAttribute("data-theme", "light");
-    else if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    // Theme
+    const theme = localStorage.getItem("nova-theme");
+    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+    else if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
 
-    const toggle = document.getElementById("theme-toggle");
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        const current = document.documentElement.getAttribute("data-theme");
-        const next = (!current || current === "dark") ? "light" : "dark";
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-theme");
+        const next = (!cur || cur === "dark") ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", next);
         localStorage.setItem("nova-theme", next);
+      });
+    }
+
+    // Language (default TH)
+    const lang = localStorage.getItem("nova-lang") || "th";
+    document.documentElement.setAttribute("data-lang", lang);
+
+    const langToggle = document.getElementById("lang-toggle");
+    if (langToggle) {
+      langToggle.addEventListener("click", () => {
+        const cur = document.documentElement.getAttribute("data-lang");
+        const next = cur === "en" ? "th" : "en";
+        document.documentElement.setAttribute("data-lang", next);
+        localStorage.setItem("nova-lang", next);
       });
     }
   })();
