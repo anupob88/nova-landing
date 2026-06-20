@@ -97,6 +97,7 @@
   );
 }
 
+:root {
   --font-display: 'Orbitron', system-ui, sans-serif;
   --font-body: 'Sora', system-ui, sans-serif;
 
