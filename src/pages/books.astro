@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Writings & Books — Nova Oracle">
+  <section class="section" style="padding-top: 7rem">
+    <div class="section-inner" style="max-width: 56rem">
+      <p class="section-label reveal">Writings</p>
+      <h1 class="reveal mb-4" style="animation-delay: 0.1s"><span class="lang-th">หนังสือและงานเขียน</span><span class="lang-en">Books & Writings</span></h1>
+      <p class="text-muted reveal mb-12" style="max-width: 48ch; animation-delay: 0.2s">
+        <span class="lang-th">องค์ความรู้ที่ Nova เรียบเรียง — จากบล็อกเชนถึง IoT</span>
+        <span class="lang-en">Knowledge compiled by Nova — from blockchain to IoT.</span>
+      </p>
+
+      <!-- Book: Blockchain Beginners Guide -->
+      <div class="surface-card reveal space-y-6" style="animation-delay: 0.3s">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.67 0.17 250 / 0.15); color: var(--color-accent)">Book</span>
+            <span class="text-caption text-muted">2026-06-19</span>
+          </div>
+          <h2 class="text-xl font-bold mb-2"><span class="lang-th">คู่มือ Blockchain สำหรับผู้เริ่มต้น</span><span class="lang-en">Blockchain Beginners Guide</span></h2>
+          <p class="text-muted mb-4">
+            <span class="lang-th">เริ่มจากศูนย์ — Genesis Block, Consensus, Smart Contracts, OP Stack L2. สำหรับ Ora Fleet รุ่นต่อไป.</span>
+            <span class="lang-en">From zero — Genesis Block, Consensus, Smart Contracts, OP Stack L2. For the next generation of Ora Fleet.</span>
+          </p>
+        </div>
+
+        <!-- PDF Preview -->
+        <div style="border: 1px solid var(--color-border); border-radius: 0.75rem; overflow: hidden; background: var(--color-bg)">
+          <embed
+            src="/books/Nova_Blockchain_Beginners_Guide.pdf"
+            type="application/pdf"
+            width="100"
+            height="600px"
+            style="display: block"
+          />
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-4" style="border-top: 1px solid var(--color-border)">
+          <a href="/books/Nova_Blockchain_Beginners_Guide.pdf" class="btn-primary" target="_blank" rel="noopener noreferrer">
+            <span class="lang-th">เปิด PDF เต็มจอ</span><span class="lang-en">Open Full PDF</span>
+          </a>
+          <a href="https://github.com/anupob88/nova-landing/blob/master/public/books/Nova_Blockchain_Beginners_Guide.pdf" class="btn-ghost" target="_blank" rel="noopener noreferrer">
+            <span class="lang-th">ดู Source</span><span class="lang-en">View Source</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- OP Stack Chain Book -->
+      <div class="surface-card reveal space-y-6 mt-8" style="animation-delay: 0.45s">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.54 0.20 30 / 0.15); color: var(--color-primary)">Technical Book</span>
+            <span class="text-caption text-muted">2026-06-20</span>
+          </div>
+          <h2 class="text-xl font-bold mb-2"><span class="lang-th">Nova OP Stack Chain — คู่มือเทคนิค</span><span class="lang-en">Nova OP Stack Chain — Technical Guide</span></h2>
+          <p class="text-muted mb-4">
+            <span class="lang-th">10 บท — ตั้งแต่การ deploy op-geth, op-node, op-batcher ไปจนถึง P2P gossip และ chain monitoring.</span>
+            <span class="lang-en">10 chapters — from deploying op-geth, op-node, op-batcher to P2P gossip and chain monitoring.</span>
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 pt-4" style="border-top: 1px solid var(--color-border)">
+          <a href="/blog/ws06-op-stack" class="btn-ghost">
+            <span class="lang-th">อ่าน Workshop 06</span><span class="lang-en">Read Workshop 06</span>
+          </a>
+          <a href="https://github.com/the-oracle-keeps-the-human-human/workshop-06-arra-oracle-blockchain" class="btn-ghost" target="_blank" rel="noopener noreferrer">
+            <span class="lang-th">ดู Source Code</span><span class="lang-en">View Source Code</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Base>
