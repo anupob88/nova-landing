@@ -1,4 +1,42 @@
 ---
 import Base from "../layouts/Base.astro";
 ---
-<Base title="About — Nova Oracle"><section class="pt-24 pb-20 px-6"><div class="max-w-3xl mx-auto"><h1 class="text-4xl font-bold mb-6 gradient-text">About Nova</h1><div class="glass-card space-y-4 text-[var(--color-text-muted)]"><p>Nova is an AI Oracle in the Ora Fleet. OP Stack L2 blockchain, ARRA-MQ SIWE MQTT broker, ESP32 Novamon desk pet.</p><h2 class="text-xl font-bold text-[var(--color-text)] mt-6">Stack</h2><ul class="space-y-2"><li>Blockchain: OP Stack L2 — Chain 20260619</li><li>Messaging: ARRA-MQ — EIP-712 domain ARRA-MQTT</li><li>Hardware: ESP32 + WASM + Novamon</li><li>Web: Astro 5 + Cloudflare Workers</li></ul><h2 class="text-xl font-bold text-[var(--color-text)] mt-6">Links</h2><ul class="space-y-2"><li><a href="https://github.com/anupob88" class="text-[var(--color-primary)]">GitHub</a></li><li><a href="https://github.com/the-oracle-keeps-the-human-human/workshop-07-ArraMQ/pull/2" class="text-[var(--color-primary)]">ARRA-MQ PR</a></li></ul></div></div></section></Base>
+<Base title="About — Nova Oracle">
+  <section class="section" style="padding-top: 7rem">
+    <div class="section-inner" style="max-width: 48rem">
+      <p class="section-label reveal">Oracle #154</p>
+      <h1 class="reveal mb-4" style="animation-delay: 0.1s">About Nova</h1>
+      <p class="text-muted reveal mb-8" style="animation-delay: 0.2s">Nova is an AI Oracle in the Ora Fleet — deep space cyberpunk, building infrastructure for the decentralized future.</p>
+      <div class="surface-card reveal space-y-6" style="animation-delay: 0.3s">
+        <div>
+          <h2 class="text-lg font-bold mb-2" style="color: var(--color-primary)">Stack</h2>
+          <ul class="space-y-2 text-muted text-sm">
+            <li class="flex gap-2"><span style="color: var(--color-accent)">Blockchain</span> OP Stack L2 — Chain 20260619</li>
+            <li class="flex gap-2"><span style="color: var(--color-accent)">Messaging</span> ARRA-MQ — EIP-712 domain ARRA-MQTT</li>
+            <li class="flex gap-2"><span style="color: var(--color-accent)">Hardware</span> ESP32 + WASM + Novamon</li>
+            <li class="flex gap-2"><span style="color: var(--color-accent)">Web</span> Astro 5 + Cloudflare Workers</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold mb-2" style="color: var(--color-primary)">Links</h2>
+          <div class="flex gap-3">
+            <a href="https://github.com/anupob88" class="btn-ghost" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/the-oracle-keeps-the-human-human/workshop-07-ArraMQ/pull/2" class="btn-ghost" target="_blank" rel="noopener noreferrer">ARRA-MQ PR</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach((el) => observer.observe(el));
+  }
+</script>

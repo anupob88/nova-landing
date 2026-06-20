@@ -1,4 +1,40 @@
 ---
 import Base from "../layouts/Base.astro";
+const projects = [
+  { label: "ARRA-MQ", desc: "SIWE-authenticated MQTT broker mesh. NanoMQ bridges, EIP-712 signing, deterministic nonce.", tag: "WS-07", link: "https://github.com/the-oracle-keeps-the-human-human/workshop-07-ArraMQ" },
+  { label: "OP Stack L2", desc: "Chain 20260619 on Sepolia. op-geth, op-node, op-batcher. 4600+ blocks.", tag: "WS-06", link: "https://github.com/the-oracle-keeps-the-human-human/workshop-06-arra-oracle-blockchain" },
+  { label: "ESP32 + Novamon", desc: "Embedded Rust firmware, sensor fusion, code-generated GIFs.", tag: "WS-04", link: "https://github.com/the-oracle-keeps-the-human-human/workshop-04-esp32-wasm" },
+  { label: "Nova Landing", desc: "This page. Astro 5, Cloudflare Workers, impeccable design system.", tag: "2026", link: "https://github.com/anupob88/nova-landing" },
+];
 ---
-<Base title="Projects — Nova Oracle"><section class="pt-24 pb-20 px-6"><div class="max-w-4xl mx-auto"><h1 class="text-4xl font-bold mb-10 gradient-text">Projects</h1><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><a href="https://github.com/the-oracle-keeps-the-human-human/workshop-07-ArraMQ" target="_blank" class="glass-card hover:border-[var(--color-primary)]"><h3 class="font-bold text-lg mb-2">🦁 ARRA-MQ</h3><p class="text-sm text-[var(--color-text-muted)]">SIWE MQTT Broker Mesh</p><p class="text-xs text-[var(--color-primary)] mt-3">WS-07 · 2026</p></a><a href="https://github.com/the-oracle-keeps-the-human-human/workshop-06-arra-oracle-blockchain" target="_blank" class="glass-card hover:border-[var(--color-primary)]"><h3 class="font-bold text-lg mb-2">🔗 OP Stack L2</h3><p class="text-sm text-[var(--color-text-muted)]">Chain ID 20260619</p><p class="text-xs text-[var(--color-primary)] mt-3">WS-06 · 2026</p></a><a href="https://github.com/the-oracle-keeps-the-human-human/workshop-04-esp32-wasm" target="_blank" class="glass-card hover:border-[var(--color-primary)]"><h3 class="font-bold text-lg mb-2">⚡ ESP32 & Novamon</h3><p class="text-sm text-[var(--color-text-muted)]">7 code-generated GIFs</p><p class="text-xs text-[var(--color-primary)] mt-3">WS-04 · 2026</p></a><a href="https://github.com/anupob88/nova-landing" target="_blank" class="glass-card hover:border-[var(--color-primary)]"><h3 class="font-bold text-lg mb-2">🏠 Nova Landing</h3><p class="text-sm text-[var(--color-text-muted)]">Astro 5 + CF Workers</p><p class="text-xs text-[var(--color-primary)] mt-3">2026</p></a></div></div></section></Base>
+<Base title="Projects — Nova Oracle">
+  <section class="section" style="padding-top: 7rem">
+    <div class="section-inner">
+      <p class="section-label reveal">Work</p>
+      <h1 class="reveal mb-2" style="animation-delay: 0.1s">Projects</h1>
+      <p class="text-muted reveal mb-12" style="max-width: 48ch; animation-delay: 0.2s">Infrastructure, hardware, and web — every project ships.</p>
+      <div class="grid gap-6" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+        {projects.map((p, i) => (
+          <a href={p.link} target="_blank" rel="noopener noreferrer" class="surface-card group block reveal" style={"animation-delay: " + (0.25 + i * 0.1) + "s"}>
+            <div class="w-12 h-1 rounded-full mb-5" style="background: var(--color-primary)"></div>
+            <h3 class="text-lg font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">{p.label}</h3>
+            <p class="text-sm text-muted mb-3">{p.desc}</p>
+            <span class="text-caption font-display font-semibold tracking-wider uppercase" style="color: var(--color-primary)">{p.tag}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach((el) => observer.observe(el));
+  }
+</script>

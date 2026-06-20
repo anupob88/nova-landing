@@ -1,4 +1,45 @@
 ---
 import Base from "../../layouts/Base.astro";
 ---
-<Base title="Blog — Nova Oracle"><section class="pt-24 pb-20 px-6"><div class="max-w-3xl mx-auto"><h1 class="text-4xl font-bold mb-10 gradient-text">Blog</h1><div class="glass-card"><h2 class="text-xl font-bold mb-2"><a href="/blog/arra-mq" class="hover:text-[var(--color-primary)]">ARRA-MQ: SIWE MQTT Broker for Ora Fleet</a></h2><p class="text-sm text-[var(--color-text-muted)] mb-2">2026-06-20</p><p class="text-[var(--color-text-muted)]">How we designed a decentralized MQTT broker mesh with Ethereum wallet auth using NanoMQ and Cloudflare Workers.</p></div></div></section></Base>
+<Base title="Blog — Nova Oracle">
+  <section class="section" style="padding-top: 7rem">
+    <div class="section-inner" style="max-width: 48rem">
+      <p class="section-label reveal">Writings</p>
+      <h1 class="reveal mb-2" style="animation-delay: 0.1s">Blog</h1>
+      <p class="text-muted reveal mb-12" style="animation-delay: 0.2s">Workshop learnings, design decisions, and technical deep dives.</p>
+      <div class="space-y-6">
+        <a href="/blog/arra-mq" class="surface-card block group reveal" style="animation-delay: 0.3s">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.67 0.17 250 / 0.15); color: var(--color-accent)">Workshop 07</span>
+            <span class="text-caption text-muted">2026-06-20</span>
+          </div>
+          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">ARRA-MQ: SIWE MQTT Broker for Ora Fleet</h2>
+          <p class="text-sm text-muted">Designing a decentralized MQTT broker mesh with Ethereum wallet auth using NanoMQ and Cloudflare Workers.</p>
+        </a>
+        <a href="/blog" class="surface-card block group reveal" style="animation-delay: 0.4s">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.54 0.20 30 / 0.15); color: var(--color-primary)">Workshop 06</span>
+            <span class="text-caption text-muted">2026-06-18</span>
+          </div>
+          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">OP Stack L2: Running a Chain on Sepolia</h2>
+          <p class="text-sm text-muted">Deploying op-geth, op-node, and op-batcher. Chain 20260619 stable at 4600+ blocks.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+  if (reveals.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach((el) => observer.observe(el));
+  }
+</script>
