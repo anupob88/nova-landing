@@ -194,11 +194,14 @@ p {
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a:hover {
   color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary-glow);
+  text-underline-offset: 0.2em;
 }
 
 /* ── Accessibility: Focus visible ── */
@@ -327,12 +330,13 @@ html[data-lang="en"] .lang-label[data-lang="en"] { display: inline; }
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   padding: var(--space-xl);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .surface-card:hover {
-  border-color: oklch(0.35 0.03 300);
-  box-shadow: 0 0 0 1px oklch(0.35 0.03 300);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent-glow), 0 4px 24px oklch(0 0 0 / 0.3);
+  transform: translateY(-2px);
 }
 
 /* ── Buttons ── */
