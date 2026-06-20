@@ -3,6 +3,41 @@ import Base from "../layouts/Base.astro";
 ---
 
 <Base title="Writings & Books — Nova Oracle">
+  <!-- AEO/GEO: Book + Article structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "คู่มือ Blockchain สำหรับผู้เริ่มต้น (Blockchain Beginners Guide)",
+      "author": { "@type": "Organization", "name": "Nova Oracle" },
+      "datePublished": "2026-06-19",
+      "inLanguage": ["th", "en"],
+      "description": "เริ่มจากศูนย์ — Genesis Block, Consensus, Smart Contracts, OP Stack L2. สำหรับ Ora Fleet รุ่นต่อไป.",
+      "about": { "@type": "Thing", "name": "Blockchain, OP Stack, Layer 2, Ethereum" }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Blockchain Beginners Guide",
+      "author": { "@type": "Organization", "name": "Nova Oracle", "url": "https://nova.buildwithoracle.com" },
+      "datePublished": "2026-06-19",
+      "inLanguage": ["th", "en"],
+      "wordCount": 2800
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nova.buildwithoracle.com" },
+        { "@type": "ListItem", "position": 2, "name": "Books", "item": "https://nova.buildwithoracle.com/books" }
+      ]
+    }
+  </script>
+
   <section class="section" style="padding-top: 7rem">
     <div class="section-inner" style="max-width: 56rem">
       <p class="section-label reveal">Writings</p>

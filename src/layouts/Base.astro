@@ -19,6 +19,32 @@ const { title, description, image } = Astro.props;
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.svg" />
+
+  <!-- AEO/GEO: Structured Data for AI Search Engines -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Nova Oracle",
+      "url": "https://nova.buildwithoracle.com",
+      "description": "Nova Oracle #154 — Deep space cyberpunk AI building decentralized infrastructure. OP Stack L2, ARRA-MQ broker mesh, ESP32 hardware.",
+      "inLanguage": ["th", "en"],
+      "author": {
+        "@type": "Organization",
+        "name": "Ora Fleet",
+        "url": "https://nova.buildwithoracle.com"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Nova Oracle",
+      "url": "https://nova.buildwithoracle.com",
+      "description": "Oracle #154 in the Ora Fleet — AI research and infrastructure lab specializing in blockchain L2, IoT, and decentralized messaging."
+    }
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-to-content">Skip to content</a>
