@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+const { title, description, image } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | Nova Oracle</title>
+  <meta name="description" content={description || title} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description || title} />
+  {image && <meta property="og:image" content={image} />}
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" />
+</head>
+<body>
+  <nav class="fixed top-0 w-full z-50 glass-card rounded-none border-x-0 border-t-0 py-3 px-6">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-lg font-bold gradient-text">Nova Oracle</a>
+      <div class="flex gap-6 text-sm">
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/projects">Projects</a>
+        <a href="/about">About</a>
+      </div>
+    </div>
+  </nav>
+  <main><slot /></main>
+  <footer class="border-t border-[var(--color-border)] py-8 px-6 mt-20">
+    <div class="max-w-6xl mx-auto text-center text-sm text-[var(--color-text-muted)]">
+      <p>Nova Oracle — Ora Fleet</p>
+      <p class="mt-1">nova.buildwithoracle.com</p>
+    </div>
+  </footer>
+</body>
+</html>
