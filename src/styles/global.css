@@ -1,1 +1,337 @@
-@import "tailwindcss";:root{--color-primary:#8b5cf6;--color-secondary:#06b6d4;--color-bg:#0f0b1a;--color-surface:#1a1530;--color-text:#f0e6ff;--color-text-muted:#9888cc;--color-border:#2d2350;--color-accent:#ec4899}*{box-sizing:border-box;margin:0;padding:0}body{background:var(--color-bg);color:var(--color-text);font-family:system-ui,-apple-system,sans-serif;line-height:1.6}.gradient-text{background:linear-gradient(135deg,var(--color-primary),var(--color-accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.glass-card{background:rgba(26,21,48,0.6);backdrop-filter:blur(12px);border:1px solid var(--color-border);border-radius:1rem;padding:1.5rem}
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sora:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Nova — Deep Space Cyberpunk
+     Mood: "Deep space observatory at midnight — nebula glow through
+            reinforced glass, titanium instruments catching starlight"
+     Strategy: Drenched — pure void black surface, electric crimson primary  */
+
+  --color-bg:        oklch(0.06 0.000 0);
+  --color-surface:   oklch(0.12 0.006 300);
+  --color-surface-alt: oklch(0.10 0.003 290);
+  --color-primary:   oklch(0.54 0.20 30);
+  --color-primary-glow: oklch(0.54 0.20 30 / 0.35);
+  --color-accent:    oklch(0.67 0.17 250);
+  --color-accent-glow: oklch(0.67 0.17 250 / 0.30);
+  --color-ink:       oklch(0.95 0.003 300);
+  --color-muted:     oklch(0.55 0.015 300);
+  --color-border:    oklch(0.20 0.010 300);
+
+  --font-display: 'Orbitron', system-ui, sans-serif;
+  --font-body: 'Sora', system-ui, sans-serif;
+
+  /* Typography scale */
+  --text-hero: clamp(3rem, 8vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 5vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-caption: 0.75rem;
+
+  /* Spacing scale (8px base) */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Typography ── */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  line-height: 1.15;
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+
+p {
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* ── Utility ── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-muted); }
+
+/* ── Surface cards (replaces glass-card — no glassmorphism) ── */
+
+.surface-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: var(--space-xl);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.surface-card:hover {
+  border-color: oklch(0.35 0.03 300);
+  box-shadow: 0 0 0 1px oklch(0.35 0.03 300);
+}
+
+/* ── Buttons ── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-small);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  background: oklch(0.59 0.22 30);
+  box-shadow: 0 0 24px var(--color-primary-glow);
+  color: white;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-small);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ── Nav ── */
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1rem 1.5rem;
+  background: oklch(0.06 0.000 0 / 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-ink);
+}
+
+/* ── Sections ── */
+
+.section {
+  padding: var(--space-5xl) 1.5rem;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+/* ── Footer ── */
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-3xl) 1.5rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-text {
+  font-size: var(--text-caption);
+  color: var(--color-muted);
+}
+
+/* ── Animations ── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .section {
+    padding: var(--space-4xl) 1rem;
+  }
+}

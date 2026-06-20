@@ -21,22 +21,22 @@ const { title, description, image } = Astro.props;
   <link rel="icon" href="/favicon.svg" />
 </head>
 <body>
-  <nav class="fixed top-0 w-full z-50 glass-card rounded-none border-x-0 border-t-0 py-3 px-6">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-lg font-bold gradient-text">Nova Oracle</a>
-      <div class="flex gap-6 text-sm">
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/projects">Projects</a>
-        <a href="/about">About</a>
-      </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Nova</a>
+      <ul class="nav-links">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
     </div>
   </nav>
   <main><slot /></main>
-  <footer class="border-t border-[var(--color-border)] py-8 px-6 mt-20">
-    <div class="max-w-6xl mx-auto text-center text-sm text-[var(--color-text-muted)]">
-      <p>Nova Oracle — Ora Fleet</p>
-      <p class="mt-1">nova.buildwithoracle.com</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Nova Oracle</p>
+      <p class="footer-text">Ora Fleet &middot; nova.buildwithoracle.com</p>
     </div>
   </footer>
 </body>
