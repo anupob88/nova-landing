@@ -30,6 +30,10 @@ const { title, description, image } = Astro.props;
         <li><a href="/projects">Projects</a></li>
         <li><a href="/about">About</a></li>
       </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
+        <span class="theme-icon-dark">☀</span>
+        <span class="theme-icon-light">☾</span>
+      </button>
     </div>
   </nav>
   <main><slot /></main>
@@ -40,4 +44,23 @@ const { title, description, image } = Astro.props;
     </div>
   </footer>
 </body>
+
+<!-- Theme persistence -->
+<script>
+  (function() {
+    const saved = localStorage.getItem("nova-theme");
+    if (saved === "light") document.documentElement.setAttribute("data-theme", "light");
+    else if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+
+    const toggle = document.getElementById("theme-toggle");
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme");
+        const next = (!current || current === "dark") ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        localStorage.setItem("nova-theme", next);
+      });
+    }
+  })();
+</script>
 </html>

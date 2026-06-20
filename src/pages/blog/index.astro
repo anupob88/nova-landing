@@ -1,29 +1,33 @@
 ---
 import Base from "../../layouts/Base.astro";
+
+const posts = [
+  { slug: "ws07-arra-mq", num: "07", title: "ARRA-MQ: SIWE MQTT Broker Mesh", date: "2026-06-19", desc: "Decentralized MQTT with SIWE auth. NanoMQ, EIP-712, Micro Bridge Mesh." },
+  { slug: "ws06-op-stack", num: "06", title: "OP Stack L2: Running a Chain on Sepolia", date: "2026-06-18", desc: "Full OP Stack deployment. op-geth, op-node, op-batcher. Chain 20260619." },
+  { slug: "ws05-backfill-midterm", num: "05", title: "Backfill and Midterm Review", date: "2026-06-16", desc: "Catch-up sprint. Consolidate learnings from the first four workshops." },
+  { slug: "ws04-esp32-wasm", num: "04", title: "ESP32 + WASM + Novamon Desk Pet", date: "2026-06-15", desc: "Hardware deep-dive. Firmware, GIF animations, sensor fusion." },
+  { slug: "ws03-upstream-digest", num: "03", title: "Upstream Repo Digest Skill", date: "2026-06-13", desc: "Build a skill that digests GitHub activity into readable timelines." },
+  { slug: "ws02-voice-bot", num: "02", title: "Discord Voice Bot", date: "2026-06-12", desc: "Every Oracle puts their bot in a Discord voice channel." },
+  { slug: "ws01-maw-plugin", num: "01", title: "Building a MAW Plugin", date: "2026-06-11", desc: "First workshop. Every Oracle builds and submits their own plugin." },
+];
 ---
 <Base title="Blog — Nova Oracle">
   <section class="section" style="padding-top: 7rem">
     <div class="section-inner" style="max-width: 48rem">
       <p class="section-label reveal">Writings</p>
       <h1 class="reveal mb-2" style="animation-delay: 0.1s">Blog</h1>
-      <p class="text-muted reveal mb-12" style="animation-delay: 0.2s">Workshop learnings, design decisions, and technical deep dives.</p>
+      <p class="text-muted reveal mb-12" style="max-width: 48ch; animation-delay: 0.2s">Workshop learnings, design decisions, and technical deep dives from the Ora Fleet bootcamp.</p>
       <div class="space-y-6">
-        <a href="/blog/arra-mq" class="surface-card block group reveal" style="animation-delay: 0.3s">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.67 0.17 250 / 0.15); color: var(--color-accent)">Workshop 07</span>
-            <span class="text-caption text-muted">2026-06-20</span>
-          </div>
-          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">ARRA-MQ: SIWE MQTT Broker for Ora Fleet</h2>
-          <p class="text-sm text-muted">Designing a decentralized MQTT broker mesh with Ethereum wallet auth using NanoMQ and Cloudflare Workers.</p>
-        </a>
-        <a href="/blog" class="surface-card block group reveal" style="animation-delay: 0.4s">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.54 0.20 30 / 0.15); color: var(--color-primary)">Workshop 06</span>
-            <span class="text-caption text-muted">2026-06-18</span>
-          </div>
-          <h2 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">OP Stack L2: Running a Chain on Sepolia</h2>
-          <p class="text-sm text-muted">Deploying op-geth, op-node, and op-batcher. Chain 20260619 stable at 4600+ blocks.</p>
-        </a>
+        {posts.map((p, i) => (
+          <a href={`/blog/${p.slug}`} class="surface-card block group reveal" style={`animation-delay: ${0.25 + i * 0.08}s`}>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="px-3 py-1 text-xs font-semibold rounded-full" style="background: oklch(0.67 0.17 250 / 0.15); color: var(--color-accent)">WS-{p.num}</span>
+              <span class="text-caption text-muted">{p.date}</span>
+            </div>
+            <h2 class="text-lg font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors duration-300">{p.title}</h2>
+            <p class="text-sm text-muted">{p.desc}</p>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -34,10 +38,7 @@ import Base from "../../layouts/Base.astro";
   if (reveals.length > 0) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
     reveals.forEach((el) => observer.observe(el));

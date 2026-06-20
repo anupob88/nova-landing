@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Sora:wght@300;400;500;600&display=swap');
 
 :root {
-  /* Nova — Deep Space Cyberpunk
+  /* Nova — Deep Space Cyberpunk (Dark Mode — default)
      Mood: "Deep space observatory at midnight — nebula glow through
             reinforced glass, titanium instruments catching starlight"
      Strategy: Drenched — pure void black surface, electric crimson primary  */
@@ -17,6 +17,77 @@
   --color-ink:       oklch(0.95 0.003 300);
   --color-muted:     oklch(0.55 0.015 300);
   --color-border:    oklch(0.20 0.010 300);
+
+  /* Hero overlay gradient (dark mode only — light mode uses different overlay) */
+  --hero-overlay: linear-gradient(
+    180deg,
+    oklch(0.06 0 0 / 0.85) 0%,
+    oklch(0.08 0.005 290 / 0.65) 40%,
+    oklch(0.06 0 0 / 0.95) 100%
+  );
+}
+
+/* ── Light Mode ── */
+/* System preference OR manual [data-theme="light"] override */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-bg:            oklch(0.98 0.002 290);
+    --color-surface:       oklch(1.000 0.000 0);
+    --color-surface-alt:   oklch(0.96 0.003 290);
+    --color-primary:       oklch(0.45 0.22 30);
+    --color-primary-glow:  oklch(0.45 0.22 30 / 0.15);
+    --color-accent:        oklch(0.55 0.18 250);
+    --color-accent-glow:   oklch(0.55 0.18 250 / 0.12);
+    --color-ink:           oklch(0.12 0.005 290);
+    --color-muted:         oklch(0.45 0.010 290);
+    --color-border:        oklch(0.85 0.005 290);
+    --hero-overlay: linear-gradient(
+      180deg,
+      oklch(0.98 0.002 290 / 0.60) 0%,
+      oklch(0.98 0.002 290 / 0.30) 40%,
+      oklch(0.98 0.002 290 / 0.85) 100%
+    );
+  }
+}
+
+/* Manual theme overrides */
+[data-theme="light"] {
+  --color-bg:            oklch(0.98 0.002 290);
+  --color-surface:       oklch(1.000 0.000 0);
+  --color-surface-alt:   oklch(0.96 0.003 290);
+  --color-primary:       oklch(0.45 0.22 30);
+  --color-primary-glow:  oklch(0.45 0.22 30 / 0.15);
+  --color-accent:        oklch(0.55 0.18 250);
+  --color-accent-glow:   oklch(0.55 0.18 250 / 0.12);
+  --color-ink:           oklch(0.12 0.005 290);
+  --color-muted:         oklch(0.45 0.010 290);
+  --color-border:        oklch(0.85 0.005 290);
+  --hero-overlay: linear-gradient(
+    180deg,
+    oklch(0.98 0.002 290 / 0.60) 0%,
+    oklch(0.98 0.002 290 / 0.30) 40%,
+    oklch(0.98 0.002 290 / 0.85) 100%
+  );
+}
+
+[data-theme="dark"] {
+  --color-bg:        oklch(0.06 0.000 0);
+  --color-surface:   oklch(0.12 0.006 300);
+  --color-surface-alt: oklch(0.10 0.003 290);
+  --color-primary:   oklch(0.54 0.20 30);
+  --color-primary-glow: oklch(0.54 0.20 30 / 0.35);
+  --color-accent:    oklch(0.67 0.17 250);
+  --color-accent-glow: oklch(0.67 0.17 250 / 0.30);
+  --color-ink:       oklch(0.95 0.003 300);
+  --color-muted:     oklch(0.55 0.015 300);
+  --color-border:    oklch(0.20 0.010 300);
+  --hero-overlay: linear-gradient(
+    180deg,
+    oklch(0.06 0 0 / 0.85) 0%,
+    oklch(0.08 0.005 290 / 0.65) 40%,
+    oklch(0.06 0 0 / 0.95) 100%
+  );
+}
 
   --font-display: 'Orbitron', system-ui, sans-serif;
   --font-body: 'Sora', system-ui, sans-serif;
@@ -108,6 +179,40 @@ a:hover {
 .text-primary { color: var(--color-primary); }
 .text-accent { color: var(--color-accent); }
 .text-muted { color: var(--color-muted); }
+
+/* ── Theme Toggle ── */
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-ink);
+  border-color: var(--color-primary);
+}
+
+/* Show correct icon based on current theme */
+.theme-icon-light { display: none; }
+.theme-icon-dark { display: inline; }
+
+[data-theme="light"] .theme-icon-light,
+:root:not([data-theme="dark"]) .theme-icon-light { display: inline; }
+
+[data-theme="light"] .theme-icon-dark,
+:root:not([data-theme="dark"]) .theme-icon-dark { display: none; }
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-icon-dark { display: none; }
+  :root:not([data-theme="dark"]) .theme-icon-light { display: inline; }
+}
 
 /* ── Surface cards (replaces glass-card — no glassmorphism) ── */
 
