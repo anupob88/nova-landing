@@ -418,7 +418,11 @@ html[data-lang="en"] .lang-label[data-lang="en"] { display: inline; }
   color: var(--color-primary);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+.nav-brand:hover { color: var(--color-primary); text-decoration: none; }
 
 .nav-links {
   display: flex;
@@ -522,6 +526,42 @@ html[data-lang="en"] .lang-label[data-lang="en"] { display: inline; }
 
 .glow-pulse {
   animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Animated Logo ── */
+
+@keyframes logo-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes logo-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.8; }
+}
+
+@keyframes logo-center-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.15); }
+}
+
+.nova-logo {
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.logo-ring {
+  animation: logo-rotate 12s linear infinite;
+  transform-origin: 12px 12px;
+}
+
+.logo-core {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+.logo-center {
+  animation: logo-center-pulse 2.5s ease-in-out infinite;
+  transform-origin: 12px 12px;
 }
 
 /* ── Reduced motion ── */
